@@ -11,30 +11,15 @@ import java.util.UUID;
 @RequestMapping("/api")
 public class BookingApiController {
 
-    @GetMapping("/api/test")
+    @GetMapping("/test")
     public String test() {
         return "API WORKING";
     }
 
-    @Autowired
-    private EmailService emailService;
-
     @PostMapping("/book")
     public Booking bookRoom(@RequestBody Booking booking) {
-
-        // Generate meeting link
         String meetingLink = "https://meet.doorjames.com/" + UUID.randomUUID();
         booking.setMeetingLink(meetingLink);
-
-        // Prepare email
-        String body = "Meeting Room Booked\n\n" +
-                "Room: " + booking.getRoomName() + "\n" +
-                "Time: " + booking.getDateTime() + "\n" +
-                "Colleagues: " + booking.getColleagues() + "\n" +
-                "Meeting Link: " + meetingLink;
-
-        // Send email
-        emailService.sendEmail("team@company.com", "Meeting Booked", body);
 
         return booking;
     }
