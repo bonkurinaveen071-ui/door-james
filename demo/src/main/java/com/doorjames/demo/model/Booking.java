@@ -6,6 +6,25 @@ public class Booking {
     private String colleagues;
     private String meetingLink;
 
+    private int capacity;
+    private boolean needTv;
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public boolean isNeedTv() {
+        return needTv;
+    }
+
+    public void setNeedTv(boolean needTv) {
+        this.needTv = needTv;
+    }
+
     public String getRoomName() {
         return roomName;
     }
@@ -38,12 +57,15 @@ public class Booking {
         this.meetingLink = meetingLink;
     }
 
-    public Booking(String roomName, String dateTime, String colleagues, String meetingLink) {
+    public Booking(String roomName, String dateTime, String colleagues, String meetingLink, int capacity, boolean needTv) {
         this.roomName = roomName;
         this.dateTime = dateTime;
         this.colleagues = colleagues;
         this.meetingLink = meetingLink;
+        this.capacity = capacity;
+        this.needTv = needTv;
     }
+
     public Booking(){
 
     }
@@ -55,6 +77,8 @@ public class Booking {
                 ", dateTime='" + dateTime + '\'' +
                 ", colleagues='" + colleagues + '\'' +
                 ", meetingLink='" + meetingLink + '\'' +
+                ", capacity=" + capacity +
+                ", needTv=" + needTv +
                 '}';
     }
 }
